@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import googleSignIn from '../googleSignIn.png';
 
 class GoogleLogin extends Component {
     constructor() {
@@ -56,7 +57,7 @@ class GoogleLogin extends Component {
                 <div>
                     <h4>Login</h4>
                     <button>
-                        <img src="./googleSignIn.png" alt="googleSignIn" className="googleSignInBtn" onClick={this.handleSubmit} type="submit" />
+                        <img src={googleSignIn} alt="googleSignIn" className="googleSignInBtn" onClick={this.handleSubmit} type="submit" />
                     </button>
                 </div>
             )

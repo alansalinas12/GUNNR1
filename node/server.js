@@ -10,11 +10,12 @@ const dotenv = require('dotenv');
 const app = express();
 const PORT = 8080;
 
+
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: ".env" });
 
 // Route requires
-const user = require('./routes/user');
+const user = require('./routes/userRoutes');
 
 // MIDDLEWARE
 app.use(morgan('dev'));
@@ -28,7 +29,7 @@ app.use(bodyParser.json());
 // Sessions
 app.use(
     session({
-        secret: process.env.SESSION_SECRET,
+        secret: "randomrandom",
         store: new MongoStore({ mongooseConnection: dbConnection }),
         resave: false,
         saveUninitialized: false
@@ -41,7 +42,7 @@ app.use(passport.session());
 
 
 // Routes
-app.use('/user', user);
+app.use('/login', user);
 
 // Starting Server 
 app.listen(PORT, () => {
