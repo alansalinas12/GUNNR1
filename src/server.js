@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Route requires
-const user = require('./routes/userRoutes');
+//const user = require('./routes/userRoutes');
 
 // MIDDLEWARE
 app.use(morgan('dev'));
@@ -40,13 +40,8 @@ app.use(
     })
 );
 
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // Routes
-app.use('/login', user);
 
 // Starting Server 
 app.listen(PORT, () => {
