@@ -18,9 +18,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
 }
 
-// Route requires
-//const user = require('./routes/userRoutes');
-
 // MIDDLEWARE
 app.use(morgan('dev'));
 app.use(
@@ -41,7 +38,8 @@ app.use(
 );
 
 
-// Routes
+// Route requires
+require('./apiRoutes')(app);
 
 // Starting Server 
 app.listen(PORT, () => {

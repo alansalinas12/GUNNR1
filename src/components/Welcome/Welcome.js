@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -21,7 +22,17 @@ class Welcome extends Component {
             console.log(response);
 
             let userObject = response;
-            sessionStorage.setItem('user', user);
+           // sessionStorage.setItem('user', user);
+
+            axios.post('/user', {
+                data: userObject
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
 
         return (
