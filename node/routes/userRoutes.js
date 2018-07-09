@@ -3,13 +3,8 @@ const router = express.Router()
 const User = require('../database/models/user')
 const passport = require('../passport')
 
-router.post(
-    '/login',
-    function (req, res, next) {
-        console.log('routes/userRoutes.js, login, req.body: ');
-        console.log(req.body)
-        next()
-    },
+router.get(
+    '/auth/google',
     passport.authenticate('google', {scope: ['profile']}),
     (req, res) => {
         console.log('logged in', req.user);
@@ -19,6 +14,14 @@ router.post(
         res.send(userInfo);
     }
 )
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', {
+        failureRedirect: '/'
+    }),
+    function (req, res) {
+        res.redirect('/');
+    });
 
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')

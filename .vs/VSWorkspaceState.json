@@ -1,16 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\frontend",
-    "\\frontend\\public",
-    "\\frontend\\src",
-    "\\frontend\\src\\components",
     "\\node",
     "\\node\\database",
     "\\node\\database\\models",
     "\\node\\passport",
-    "\\node\\routes"
+    "\\node\\routes",
+    "\\public",
+    "\\src",
+    "\\src\\components"
   ],
-  "SelectedNode": "\\frontend\\src\\App.js",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
