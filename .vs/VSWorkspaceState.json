@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\node",
-    "\\node\\database",
-    "\\node\\database\\models",
-    "\\node\\passport",
-    "\\node\\routes",
     "\\public",
     "\\src",
-    "\\src\\components"
+    "\\src\\components",
+    "\\src\\components\\Footer",
+    "\\src\\components\\Header",
+    "\\src\\components\\Home",
+    "\\src\\database",
+    "\\src\\database\\models",
+    "\\src\\styles"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\apiRoutes.js",
   "PreviewInSolutionExplorer": false
 }
