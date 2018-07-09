@@ -8,11 +8,15 @@ const passport = require('./passport');
 const path = require('path');
 const dotenv = require('dotenv');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: ".env" });
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+}
 
 // Route requires
 const user = require('./routes/userRoutes');
