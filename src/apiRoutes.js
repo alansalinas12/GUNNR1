@@ -2,15 +2,15 @@ const express = require('express');
 const dbConnection = require('./database');
 
 module.exports = function (app) {
+
     app.post("/user", function (req, res) {
 
         console.log(req);
         console.log(res);
 
-        User.findOne({ googleId: req.googleId }, (err, existingUser) => {
+        User.findOne({ googleId: req.data.googleId }, (err, existingUser) => {
             if (existingUser) {
-                this.setState({ loggedIn: true });
-                return (<Redirect to={'/home'} />)
+                return existingUser;
             } else {
                 const user = new User();
 
@@ -23,8 +23,6 @@ module.exports = function (app) {
                 user.save((err, user) => {
                     return user;
                 });
-                this.setState({ loggedIn: true });
-                return (<Redirect to={'/home'} />)
             }
         })
     });
