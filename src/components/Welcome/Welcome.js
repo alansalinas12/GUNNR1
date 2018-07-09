@@ -24,15 +24,19 @@ class Welcome extends Component {
             let userObject = response;
            // sessionStorage.setItem('user', user);
 
-            axios.post('/user', {
-                data: userObject
-            })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            axios({
+                method: 'post',
+                url: '/user',
+                data: {
+                    profile: {
+                        name: userObject.w3.ig,
+                        email: userObject.w3.U3
+                    },
+                    googleId: userObject.googleId,
+                    tokens: userObject.accessToken,
+                    ownedWeps: []
+                }
+            });
         }
 
         return (

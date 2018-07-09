@@ -1,5 +1,5 @@
 const express = require('express');
-const dbConnection = require('./database');
+const User = require('./database/models/user');
 
 module.exports = function (app) {
 
@@ -14,8 +14,8 @@ module.exports = function (app) {
             } else {
                 const user = new User();
 
-                user.profile.name = req.data.w3.ig;
-                user.profile.email = req.data.w3.U3;
+                user.profile.name = req.data.profile.name;
+                user.profile.email = req.data.profile.email;
                 user.googleId = req.data.googleId;
                 user.tokens.push(req.data.accessToken);
                 user.ownedWeps = [];
