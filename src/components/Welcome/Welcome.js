@@ -24,7 +24,7 @@ class Welcome extends Component {
 
             User.findOne({ googleId: response.googleId }, (err, existingUser) => {
                 if (existingUser) {
-                    sessionStorage.setItem(user, existingUser);
+                    sessionStorage.setItem('user', existingUser);
                     this.setState({ loggedIn: true });
                     return (<Redirect to={'/home'} />)
                 } else {
@@ -37,10 +37,10 @@ class Welcome extends Component {
                     user.ownedWeps = [];
 
                     user.save((err) => {
-                        done(err, user);
+                        return user;
                     });
 
-                    sessionStorage.setItem(user, user);
+                    sessionStorage.setItem('user', user);
                     this.setState({ loggedIn: true });
                     return (<Redirect to={'/home'} />)
                 }
