@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
 import { Redirect } from 'react-router-dom';
+import User from '../../database/models/user';
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -8,19 +9,42 @@ class Welcome extends Component {
         super(props);
         this.state = {
             loginError: false,
-            redirect: false
+            redirect: false,
+            loggedIn: false
         };
     }
 
-    render() {
 
-        if (this.state.redirect || sessionStorage.getItem('userData')) {
-            return (<Redirect to={'/home'} />)
-        }
+    render() {
 
         const responseGoogle = (response) => {
             console.log("google console");
-            console.log(response);           
+            console.log(response);
+            
+
+            User.findOne({ googleId: response.googleId }, (err, existingUser) => {
+                if (existingUser) {
+                    sessionStorage.setItem(user, existingUser);
+                    this.setState({ loggedIn: true });
+                    return (<Redirect to={'/home'} />)
+                } else {
+                    const user = new User();
+
+                    user.profile.name = response.w3.ig;
+                    user.profile.email = response.w3.U3;
+                    user.googleId = response.googleId;
+                    user.tokens.push(response.accessToken);
+                    user.ownedWeps = [];
+
+                    user.save((err) => {
+                        done(err, user);
+                    });
+
+                    sessionStorage.setItem(user, user);
+                    this.setState({ loggedIn: true });
+                    return (<Redirect to={'/home'} />)
+                }
+            })
         }
 
         return (

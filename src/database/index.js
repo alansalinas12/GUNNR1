@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const uri = 'mongodb://localhost:27017'
+const uri = 'mongodb://alan:uymt3vaa@ds121331.mlab.com:21331/heroku_lf577jfl'
 
 mongoose.connect(uri).then(
     () => {
