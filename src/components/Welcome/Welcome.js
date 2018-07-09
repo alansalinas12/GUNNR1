@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
-import { PostData } from '../../services/PostData';
 import { Redirect } from 'react-router-dom';
+import User from "../../../node/database/models/user";
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -11,32 +11,6 @@ class Welcome extends Component {
             loginError: false,
             redirect: false
         };
-        this.signup = this
-            .signup
-            .bind(this);
-    }
-
-    signup(res, type) {
-        let postData;
-
-        if (type === 'google') {
-            postData = {
-                name: res.w3.ig,
-                provider: type,
-                email: res.w3.U3,
-                provider_id: res.El,
-                token: res.Zi.access_token,
-                provider_pic: res.w3.Paa
-            };
-        }
-
-        if (postData) {
-            PostData('signup', postData).then((result) => {
-                let responseJson = result;
-                sessionStorage.setItem("userData", JSON.stringify(responseJson));
-                this.setState({ redirect: true });
-            });
-        } else { }
     }
 
     render() {
@@ -47,8 +21,7 @@ class Welcome extends Component {
 
         const responseGoogle = (response) => {
             console.log("google console");
-            console.log(response);
-            this.signup(response, 'google');
+            console.log(response);           
         }
 
         return (
