@@ -1,23 +1,23 @@
 const express = require('express');
 const User = require('./database/models/user');
+const app = express();
 
-module.exports = function (app) {
 
     app.post("/user", function (req, res) {
 
         console.log(req);
         console.log(res);
 
-        User.findOne({ googleId: req.data.googleId }, (err, existingUser) => {
+        User.findOne({ googleId: req.body.googleId }, (err, existingUser) => {
             if (existingUser) {
                 return existingUser;
             } else {
                 const user = new User();
 
-                user.profile.name = req.data.profile.name;
-                user.profile.email = req.data.profile.email;
-                user.googleId = req.data.googleId;
-                user.tokens.push(req.data.accessToken);
+                user.profile.name = req.body.profile.name;
+                user.profile.email = req.body.profile.email;
+                user.googleId = req.body.googleId;
+                user.tokens.push(req.body.accessToken);
                 user.ownedWeps = [];
 
                 user.save((err, user) => {
@@ -27,4 +27,5 @@ module.exports = function (app) {
         })
     });
 
-}
+
+module.exports = app 
