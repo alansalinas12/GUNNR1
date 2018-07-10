@@ -19,43 +19,10 @@ class Welcome extends Component {
 
         const responseGoogle = (response) => {
             console.log("google console");
-            console.log(response);
+            
 
-            let currentUser = {
-                profile: {
-                    name: response.w3.ig,
-                    email: response.w3.U3
-                },
-                googleId: response.googleId,
-                tokens: [response.accessToken]
-            }
-
-            sessionStorage.setItem('currentUser', currentUser);
-
-            axios.post('/user/', {
-                profile: {
-                    name: response.w3.ig,
-                    email: response.w3.U3
-                },
-                googleId: response.googleId
-                
-            })
-                .then(response => {
-                    console.log(response)
-                    if (!response.data.errmsg) {
-                        console.log('successful signup')
-                        this.setState({ //redirect to login page
-                            redirectTo: '/login'
-                        })
-                    } else {
-                        console.log('username already taken')
-                    }
-                }).catch(error => {
-                    console.log('signup error: ')
-                    console.log(error)
-
-                })
-
+            let user = response.getBasicProfile();
+            console.log(user);
         }
 
         return (
