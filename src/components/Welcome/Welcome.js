@@ -21,10 +21,12 @@ class Welcome extends Component {
             console.log("google console");
             console.log(response);
 
-            sessionStorage.setItem('user', response);
+            let googleId = response.googleId;
+
+            sessionStorage.setItem('user', googleId);
+
             let currentUser = sessionStorage.getItem('user');
             console.log(currentUser);
-            //let userObject = response;
 
            
         }
