@@ -21,14 +21,20 @@ class Welcome extends Component {
             console.log("google console");
             console.log(response);
 
-            let googleId = response.googleId;
+            let currentUser = {
+                profile: {
+                    name: response.w3.ig,
+                    email: response.w3.U3
+                },
+                googleId: response.googleId,
+                tokens: [response.accessToken]
+            }
 
-            sessionStorage.setItem('user', googleId);
+            sessionStorage.setItem('currentUser', currentUser);
 
-            let currentUser = sessionStorage.getItem('user');
-            console.log(currentUser);
+            let testUser = sessionStorage.getItem('currentUser');
+            console.log(testUser);
 
-           
         }
 
         return (
