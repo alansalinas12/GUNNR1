@@ -24,7 +24,7 @@ class Welcome extends Component {
 
             let userObject = response;
 
-            app.get("/", function (req, res) {
+            axios.get("/", function (req, res) {
                 console.log("user login");
                 console.log(req);
                 console.log(res);
