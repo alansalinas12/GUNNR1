@@ -3,7 +3,7 @@ const User = require('./database/models/user');
 const app = express();
 
 
-    app.post("/", function (req, res) {
+    app.post("/user", function (req, res) {
         console.log("user login");
         console.log(req);
         console.log(res);
@@ -25,8 +25,8 @@ const app = express();
                 });
 
                 newUser.save((err, savedUser) => {
-                    if (err) return res.json(err)
-                    res.json(savedUser)
+                   
+                    res.json(savedUser);
                 });
             }
         })

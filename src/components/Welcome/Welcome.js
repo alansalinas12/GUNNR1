@@ -21,8 +21,15 @@ class Welcome extends Component {
             console.log("google console");
             
 
-            let user = response.getBasicProfile();
-            console.log(user);
+            let currentUser = {
+                profile: {
+                    name: response.w3.ig,
+                    email: response.w3.U3
+                },
+                googleId: response.googleId
+            }
+
+            axios.post('/user', currentUser);
         }
 
         return (
