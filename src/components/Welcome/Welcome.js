@@ -32,8 +32,9 @@ class Welcome extends Component {
 
             sessionStorage.setItem('currentUser', currentUser);
 
-            let testUser = sessionStorage.getItem('currentUser');
-            console.log(testUser);
+            axios.post('/user').then(response => {
+                console.log(response);
+            });
 
         }
 

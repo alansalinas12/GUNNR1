@@ -8,18 +8,21 @@ const app = express();
         console.log(req);
         console.log(res);
 
-        User.findOne({ googleId: req.body.googleId }, (err, existingUser) => {
+        let currentUser = sessionStorage.getItem('currentUser');
+        console.log(currentUser);
+
+        User.findOne({ googleId: currentUser.googleId }, (err, existingUser) => {
             if (existingUser) {
                 res.json(existingUser);
             } else {
                 const newUser = new User({
                     profile: {
-                        name: req.body.profile.name,
-                        email: req.body.profile.email
+                        name: currentUser.profile.name,
+                        email: currentUser.profile.email
                     },
-                    googleId: req.body.googleId,
-                    tokens: req.body.accessToken,
-                    ownedWeps: req.body.ownedWeps
+                    googleId: currentUser.googleId,
+                    tokens: currentUser.accessToken
+                    
                 });
 
                 newUser.save((err, savedUser) => {
