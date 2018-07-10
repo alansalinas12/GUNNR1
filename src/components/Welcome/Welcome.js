@@ -36,7 +36,9 @@ class Welcome extends Component {
                     tokens: userObject.accessToken,
                     ownedWeps: []
                 }
-            });
+            }).then(response => {
+                console.log(response);
+            })
         }
 
         return (

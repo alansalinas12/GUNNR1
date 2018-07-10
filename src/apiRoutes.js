@@ -10,7 +10,7 @@ const app = express();
 
         User.findOne({ googleId: req.body.googleId }, (err, existingUser) => {
             if (existingUser) {
-                return existingUser;
+                res.json(existingUser);
             } else {
                 const user = new User();
 
@@ -20,8 +20,8 @@ const app = express();
                 user.tokens.push(req.body.accessToken);
                 user.ownedWeps = [];
 
-                user.save((err, user) => {
-                    return user;
+                user.save((err, savedUser) => {
+                    res.json(savedUser);
                 });
             }
         })
