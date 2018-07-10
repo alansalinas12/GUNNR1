@@ -20,9 +20,15 @@ class Welcome extends Component {
         const responseGoogle = (response) => {
             console.log("google console");
             console.log(response);
-            console.log(req.session);
+            
 
             let userObject = response;
+
+            app.get("/", function (req, res) {
+                console.log("user login");
+                console.log(req);
+                console.log(res);
+            });
            
         }
 
