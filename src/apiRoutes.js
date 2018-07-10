@@ -20,8 +20,7 @@ const app = express();
                         name: req.body.profile.name,
                         email: req.body.profile.email
                     },
-                    googleId: req.body.googleId,
-                    tokens: req.body.tokens
+                    googleId: req.body.googleId
                     
                 });
 

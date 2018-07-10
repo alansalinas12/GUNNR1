@@ -37,8 +37,8 @@ class Welcome extends Component {
                     name: response.w3.ig,
                     email: response.w3.U3
                 },
-                googleId: response.googleId,
-                tokens: [response.accessToken]
+                googleId: response.googleId
+                
             })
                 .then(response => {
                     console.log(response)
