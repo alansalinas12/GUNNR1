@@ -20,25 +20,10 @@ class Welcome extends Component {
         const responseGoogle = (response) => {
             console.log("google console");
             console.log(response);
+            console.log(req.session);
 
             let userObject = response;
-           // sessionStorage.setItem('user', user);
-
-            axios({
-                method: 'post',
-                url: '/user',
-                data: {
-                    profile: {
-                        name: userObject.w3.ig,
-                        email: userObject.w3.U3
-                    },
-                    googleId: userObject.googleId,
-                    tokens: userObject.accessToken,
-                    ownedWeps: []
-                }
-            }).then(response => {
-                console.log(response);
-            });
+           
         }
 
         return (

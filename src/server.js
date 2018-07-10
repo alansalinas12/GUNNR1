@@ -34,7 +34,7 @@ app.use(
         secret: "randomrandom",
         store: new MongoStore({ mongooseConnection: dbConnection }),
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: true
     })
 );
 

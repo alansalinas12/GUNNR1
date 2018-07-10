@@ -7,10 +7,10 @@
     "\\src\\components\\Footer",
     "\\src\\components\\Header",
     "\\src\\components\\Home",
+    "\\src\\components\\Welcome",
     "\\src\\database",
-    "\\src\\database\\models",
-    "\\src\\styles"
+    "\\src\\database\\models"
   ],
-  "SelectedNode": "\\src\\apiRoutes.js",
+  "SelectedNode": "\\src\\components\\Welcome\\Welcome.js",
   "PreviewInSolutionExplorer": false
 }
