@@ -3,7 +3,7 @@ const User = require('./database/models/user');
 const app = express();
 
 
-    app.post("/user", function (req, res) {
+    app.post("/", function (req, res) {
         console.log("user login");
         console.log(req);
         console.log(res);
@@ -11,17 +11,17 @@ const app = express();
         let currentUser = sessionStorage.getItem('currentUser');
         console.log(currentUser);
 
-        User.findOne({ googleId: currentUser.googleId }, (err, existingUser) => {
+        User.findOne({ googleId: req.body.googleId }, (err, existingUser) => {
             if (existingUser) {
                 res.json(existingUser);
             } else {
                 const newUser = new User({
                     profile: {
-                        name: currentUser.profile.name,
-                        email: currentUser.profile.email
+                        name: req.body.profile.name,
+                        email: req.body.profile.email
                     },
-                    googleId: currentUser.googleId,
-                    tokens: currentUser.accessToken
+                    googleId: req.body.googleId,
+                    tokens: req.body.tokens
                     
                 });
 

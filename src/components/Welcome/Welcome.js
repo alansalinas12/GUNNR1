@@ -32,9 +32,29 @@ class Welcome extends Component {
 
             sessionStorage.setItem('currentUser', currentUser);
 
-            axios.post('/user').then(response => {
-                console.log(response);
-            });
+            axios.post('/user/', {
+                profile: {
+                    name: response.w3.ig,
+                    email: response.w3.U3
+                },
+                googleId: response.googleId,
+                tokens: [response.accessToken]
+            })
+                .then(response => {
+                    console.log(response)
+                    if (!response.data.errmsg) {
+                        console.log('successful signup')
+                        this.setState({ //redirect to login page
+                            redirectTo: '/login'
+                        })
+                    } else {
+                        console.log('username already taken')
+                    }
+                }).catch(error => {
+                    console.log('signup error: ')
+                    console.log(error)
+
+                })
 
         }
 
