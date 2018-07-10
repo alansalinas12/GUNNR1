@@ -38,7 +38,7 @@ class Welcome extends Component {
                 }
             }).then(response => {
                 console.log(response);
-            })
+            });
         }
 
         return (

@@ -4,7 +4,7 @@ const app = express();
 
 
     app.post("/user", function (req, res) {
-
+        console.log("user login");
         console.log(req);
         console.log(res);
 
@@ -12,20 +12,23 @@ const app = express();
             if (existingUser) {
                 res.json(existingUser);
             } else {
-                const user = new User();
+                const newUser = new User({
+                    profile: {
+                        name: req.body.profile.name,
+                        email: req.body.profile.email
+                    },
+                    googleId: req.body.googleId,
+                    tokens: req.body.accessToken,
+                    ownedWeps: req.body.ownedWeps
+                });
 
-                user.profile.name = req.body.profile.name;
-                user.profile.email = req.body.profile.email;
-                user.googleId = req.body.googleId;
-                user.tokens.push(req.body.accessToken);
-                user.ownedWeps = [];
-
-                user.save((err, savedUser) => {
-                    res.json(savedUser);
+                newUser.save((err, savedUser) => {
+                    if (err) return res.json(err)
+                    res.json(savedUser)
                 });
             }
         })
     });
 
 
-module.exports = app 
+module.exports = app;
