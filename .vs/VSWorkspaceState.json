@@ -8,9 +8,9 @@
     "\\src\\components\\Header",
     "\\src\\components\\Home",
     "\\src\\components\\Welcome",
-    "\\src\\database",
-    "\\src\\database\\models"
+    "\\src\\components\\Weps",
+    "\\src\\database"
   ],
-  "SelectedNode": "\\src\\components\\Welcome\\Welcome.js",
+  "SelectedNode": "\\src\\apiRoutes.js",
   "PreviewInSolutionExplorer": false
 }

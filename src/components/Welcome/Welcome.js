@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
 //import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -10,7 +10,8 @@ class Welcome extends Component {
         this.state = {
             loginError: false,
             redirect: false,
-            loggedIn: false
+            loggedIn: false,
+            googleId: null
         };
     }
 
@@ -29,7 +30,11 @@ class Welcome extends Component {
                 googleId: response.googleId
             }
 
-            axios.post('/user', currentUser);
+            sessionStorage.setItem('user', currentUser);
+
+            this.setState.loggedIn = true;
+            this.setState.googleId = response.googleId;
+
         }
 
         return (

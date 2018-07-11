@@ -3,7 +3,8 @@ const User = require('./database/models/user');
 const app = express();
 
 
-    app.post("/user", function (req, res) {
+
+app.post("/user", function (req, res) {
         console.log("user login");
         console.log(req);
         console.log(res);
@@ -30,7 +31,11 @@ const app = express();
                 });
             }
         })
-    });
+});
+
+app.post("/newWep", function (req, res) {
+
+})
 
 
 module.exports = app;
